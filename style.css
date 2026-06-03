@@ -1,21 +1,25 @@
 /* ==========================================
-CHITTER'S FRITTERS
-PREMIUM KEY WEST DESIGN
+   CHITTER'S FRITTERS™
+   KEY WEST PREMIUM BRAND
 ========================================== */
 
 :root{
 
---keylime:#a4d65e;
---sunset:#ff7f50;
---pink:#ff4fa3;
---purple:#6c4cff;
---navy:#0d2b45;
---ocean:#0077b6;
---white:#ffffff;
---light:#f8f5f0;
---dark:#1b1b1b;
+--keylime:#A4D65E;
+--sunset:#FF7F50;
+--pink:#FF4FA3;
+--purple:#6C4CFF;
+--ocean:#0077B6;
+--navy:#0D2B45;
+--cream:#FFFDF8;
+--white:#FFFFFF;
+--dark:#222222;
 
 }
+
+/* ==========================
+   RESET
+========================== */
 
 *{
 margin:0;
@@ -28,81 +32,88 @@ scroll-behavior:smooth;
 }
 
 body{
+
 font-family:'Poppins',sans-serif;
-background:var(--light);
+background:var(--cream);
 color:var(--dark);
-line-height:1.7;
 overflow-x:hidden;
+line-height:1.7;
+
+}
+
+img{
+max-width:100%;
+display:block;
+}
+
+a{
+text-decoration:none;
 }
 
 .container{
+
 width:90%;
 max-width:1200px;
 margin:auto;
+
 }
 
 /* ==========================
-HEADER
+   HEADER
 ========================== */
 
 .site-header{
 
 position:fixed;
-
 top:0;
 left:0;
-
 width:100%;
 
 z-index:9999;
 
 background:
-rgba(13,43,69,.85);
+rgba(13,43,69,.92);
 
 backdrop-filter:blur(12px);
 
-transition:.3s;
-
-}
-
-.site-header.scrolled{
-
-background:
-rgba(8,28,44,.96);
-
 box-shadow:
-0 10px 30px rgba(0,0,0,.25);
+0 5px 20px rgba(0,0,0,.15);
 
 }
 
 .header-container{
 
 display:flex;
-
 justify-content:space-between;
-
 align-items:center;
 
-padding:18px 0;
+padding:15px 0;
 
 }
 
 .logo{
 
+display:flex;
+align-items:center;
+gap:12px;
+
 color:white;
-
-font-size:1.4rem;
-
 font-weight:700;
+font-size:1.2rem;
 
-text-decoration:none;
+}
+
+.logo img{
+
+width:55px;
+height:55px;
+object-fit:contain;
 
 }
 
 .main-nav{
 
 display:flex;
-
 gap:30px;
 
 }
@@ -110,17 +121,12 @@ gap:30px;
 .main-nav a{
 
 color:white;
-
-text-decoration:none;
-
 font-weight:500;
-
 transition:.3s;
 
 }
 
-.main-nav a:hover,
-.main-nav a.active{
+.main-nav a:hover{
 
 color:var(--keylime);
 
@@ -129,16 +135,20 @@ color:var(--keylime);
 .header-cta{
 
 background:var(--keylime);
-
 color:white;
 
-padding:12px 24px;
+padding:12px 25px;
 
 border-radius:50px;
+font-weight:700;
 
-text-decoration:none;
+transition:.3s;
 
-font-weight:600;
+}
+
+.header-cta:hover{
+
+background:var(--sunset);
 
 }
 
@@ -147,11 +157,9 @@ font-weight:600;
 display:none;
 
 background:none;
-
 border:none;
 
 font-size:2rem;
-
 color:white;
 
 cursor:pointer;
@@ -159,7 +167,7 @@ cursor:pointer;
 }
 
 /* ==========================
-HERO
+   HERO
 ========================== */
 
 .hero{
@@ -168,52 +176,26 @@ min-height:100vh;
 
 background:
 linear-gradient(
-135deg,
-rgba(108,76,255,.45),
-rgba(255,79,163,.35),
-rgba(255,127,80,.35)
+rgba(0,0,0,.45),
+rgba(0,0,0,.45)
 ),
-url('images/keywest-sunset.webp');
+url('images/hero-background.jpg');
 
 background-size:cover;
-
 background-position:center;
 
-background-repeat:no-repeat;
-
 display:flex;
-
 align-items:center;
 
 padding-top:120px;
-
-position:relative;
-
-}
-
-.hero-overlay{
-
-position:absolute;
-
-inset:0;
-
-background:
-rgba(0,0,0,.25);
 
 }
 
 .hero-container{
 
-position:relative;
-
-z-index:2;
-
 display:grid;
-
-grid-template-columns:1.2fr .8fr;
-
+grid-template-columns:1fr 1fr;
 gap:50px;
-
 align-items:center;
 
 }
@@ -222,19 +204,16 @@ align-items:center;
 
 display:inline-block;
 
+background:
+rgba(255,255,255,.15);
+
+backdrop-filter:blur(10px);
+
 padding:10px 18px;
 
 border-radius:50px;
 
-background:
-rgba(255,255,255,.15);
-
-backdrop-filter:blur(15px);
-
 color:white;
-
-font-size:.85rem;
-
 font-weight:600;
 
 margin-bottom:20px;
@@ -244,36 +223,63 @@ margin-bottom:20px;
 .hero h1{
 
 font-size:4.5rem;
-
 line-height:1.05;
 
 color:white;
 
-margin-bottom:20px;
+margin-bottom:25px;
 
 }
 
 .hero p{
 
-font-size:1.2rem;
-
 color:white;
 
-margin-bottom:30px;
+font-size:1.15rem;
 
-max-width:650px;
+max-width:600px;
+
+margin-bottom:35px;
 
 }
 
 .hero-buttons{
 
 display:flex;
-
-gap:20px;
-
+gap:15px;
 flex-wrap:wrap;
 
 }
+
+.hero-logo{
+
+max-width:550px;
+margin:auto;
+
+animation:
+floatLogo 4s ease-in-out infinite;
+
+}
+
+@keyframes floatLogo{
+
+0%{
+transform:translateY(0px);
+}
+
+50%{
+transform:translateY(-12px);
+}
+
+100%{
+transform:translateY(0px);
+}
+
+}
+
+/* ==========================
+   BUTTONS
+========================== */
 
 .btn{
 
@@ -282,8 +288,6 @@ display:inline-block;
 padding:16px 32px;
 
 border-radius:50px;
-
-text-decoration:none;
 
 font-weight:700;
 
@@ -294,62 +298,33 @@ transition:.3s;
 .btn-primary{
 
 background:var(--keylime);
-
 color:white;
+
+}
+
+.btn-primary:hover{
+
+background:var(--sunset);
+
+transform:translateY(-3px);
 
 }
 
 .btn-secondary{
 
 background:white;
-
 color:var(--navy);
 
 }
 
-.btn:hover{
+.btn-secondary:hover{
 
 transform:translateY(-3px);
 
 }
 
-.hero-card{
-
-background:
-rgba(255,255,255,.15);
-
-backdrop-filter:blur(18px);
-
-border:
-1px solid rgba(255,255,255,.25);
-
-padding:35px;
-
-border-radius:25px;
-
-color:white;
-
-box-shadow:
-0 20px 50px rgba(0,0,0,.25);
-
-}
-
-.card-label{
-
-display:inline-block;
-
-margin-bottom:15px;
-
-color:var(--keylime);
-
-font-weight:700;
-
-font-size:.85rem;
-
-}
-
 /* ==========================
-SECTIONS
+   SECTIONS
 ========================== */
 
 section{
@@ -372,11 +347,11 @@ display:inline-block;
 
 background:var(--keylime);
 
-color:white;
-
 padding:8px 16px;
 
 border-radius:50px;
+
+color:white;
 
 font-size:.8rem;
 
@@ -395,34 +370,86 @@ color:var(--navy);
 }
 
 /* ==========================
-STORY
+   MEET CHITTER
+========================== */
+
+.meet-grid{
+
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:50px;
+align-items:center;
+
+}
+
+.mascot-large{
+
+max-width:450px;
+margin:auto;
+
+}
+
+.meet-grid p{
+
+font-size:1.1rem;
+margin-bottom:20px;
+
+}
+
+/* ==========================
+   STORY
 ========================== */
 
 .story-grid{
 
 display:grid;
-
-grid-template-columns:2fr 1fr;
-
+grid-template-columns:1.2fr 1fr;
 gap:40px;
+
+align-items:center;
+
+margin-bottom:40px;
 
 }
 
-.story-highlight{
+.story-main img{
 
-background:white;
+border-radius:25px;
 
-padding:30px;
+box-shadow:
+0 20px 50px rgba(0,0,0,.15);
+
+}
+
+.story-content p{
+
+margin-bottom:20px;
+
+font-size:1.05rem;
+
+}
+
+.story-gallery{
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+gap:20px;
+
+}
+
+.story-gallery img{
 
 border-radius:20px;
 
 box-shadow:
-0 15px 40px rgba(0,0,0,.08);
+0 15px 40px rgba(0,0,0,.12);
 
 }
 
 /* ==========================
-PRODUCTS
+   PRODUCTS
 ========================== */
 
 .products-section{
@@ -435,7 +462,8 @@ background:white;
 
 display:grid;
 
-grid-template-columns:repeat(3,1fr);
+grid-template-columns:
+repeat(3,1fr);
 
 gap:30px;
 
@@ -445,12 +473,12 @@ gap:30px;
 
 background:white;
 
-padding:25px;
-
 border-radius:25px;
 
+overflow:hidden;
+
 box-shadow:
-0 15px 40px rgba(0,0,0,.08);
+0 15px 40px rgba(0,0,0,.1);
 
 transition:.3s;
 
@@ -458,39 +486,154 @@ transition:.3s;
 
 .product-card:hover{
 
-transform:translateY(-8px);
+transform:
+translateY(-10px);
 
 }
 
-.product-image{
+.product-card img{
 
-height:220px;
+width:100%;
+height:260px;
 
-border-radius:20px;
+object-fit:cover;
 
-margin-bottom:20px;
+}
+
+.product-card h3{
+
+padding:20px 20px 10px;
+
+color:var(--navy);
+
+}
+
+.product-card p{
+
+padding:0 20px 20px;
+
+}
+
+.price{
+
+font-size:2rem;
+font-weight:700;
+color:var(--sunset);
+
+}
+
+/* ==========================
+   ORDER
+========================== */
+
+.order-section{
 
 background:
 linear-gradient(
 135deg,
 var(--purple),
-var(--pink),
-var(--sunset)
+var(--pink)
 );
+
+color:white;
+
+}
+
+.order-section h2{
+
+color:white;
+
+}
+
+.order-card{
+
+max-width:600px;
+
+margin:auto;
+
+background:
+rgba(255,255,255,.12);
+
+backdrop-filter:blur(15px);
+
+padding:40px;
+
+border-radius:25px;
+
+text-align:center;
+
+}
+
+.quantity-selector{
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+gap:10px;
+
+margin:25px 0;
+
+}
+
+.quantity-selector button{
+
+width:50px;
+height:50px;
+
+border:none;
+
+border-radius:10px;
+
+font-size:1.4rem;
+font-weight:700;
+
+cursor:pointer;
+
+}
+
+.quantity-selector input{
+
+width:80px;
+
+height:50px;
+
+text-align:center;
+
+font-size:1.2rem;
+
+border:none;
+
+border-radius:10px;
+
+}
+
+.total-price{
+
+font-size:2rem;
+
+font-weight:700;
+
+margin-bottom:30px;
 
 }
 
 /* ==========================
-WHOLESALE
+   WHOLESALE
 ========================== */
 
 .wholesale-grid{
 
 display:grid;
 
-grid-template-columns:repeat(4,1fr);
+grid-template-columns:
+repeat(3,1fr);
 
 gap:25px;
+
+margin-bottom:40px;
 
 }
 
@@ -500,28 +643,80 @@ background:white;
 
 padding:30px;
 
+text-align:center;
+
 border-radius:20px;
 
 box-shadow:
-0 15px 35px rgba(0,0,0,.08);
+0 15px 40px rgba(0,0,0,.08);
+
+font-weight:600;
 
 }
 
-.wholesale-cta{
+.center{
 
 text-align:center;
-
-margin-top:50px;
 
 }
 
 /* ==========================
-CONTACT
+   SOCIAL
+========================== */
+
+.social-section{
+
+background:white;
+
+}
+
+.social-grid{
+
+display:grid;
+
+grid-template-columns:
+repeat(3,1fr);
+
+gap:25px;
+
+margin-bottom:30px;
+
+}
+
+.social-grid div{
+
+padding:30px;
+
+background:var(--cream);
+
+border-radius:20px;
+
+text-align:center;
+
+font-size:1.2rem;
+font-weight:700;
+
+}
+
+.social-handle{
+
+text-align:center;
+
+font-size:1.5rem;
+
+font-weight:700;
+
+color:var(--sunset);
+
+}
+
+/* ==========================
+   CONTACT
 ========================== */
 
 .contact-card{
 
-max-width:800px;
+max-width:700px;
 
 margin:auto;
 
@@ -534,7 +729,7 @@ border-radius:25px;
 text-align:center;
 
 box-shadow:
-0 20px 50px rgba(0,0,0,.1);
+0 20px 50px rgba(0,0,0,.08);
 
 }
 
@@ -544,23 +739,21 @@ display:block;
 
 margin:25px 0;
 
-font-size:1.2rem;
+font-size:1.3rem;
 
 font-weight:700;
 
 color:var(--ocean);
 
-text-decoration:none;
-
 }
 
 /* ==========================
-FOOTER
+   FOOTER
 ========================== */
 
 footer{
 
-background:#081c2c;
+background:var(--navy);
 
 color:white;
 
@@ -570,35 +763,23 @@ padding:60px 20px;
 
 }
 
-/* ==========================
-ANIMATIONS
-========================== */
+.footer-mascot{
 
-.fade-start{
+width:100px;
 
-opacity:0;
-
-transform:translateY(30px);
-
-transition:all .7s ease;
-
-}
-
-.animate{
-
-opacity:1;
-
-transform:translateY(0);
+margin:
+0 auto 20px;
 
 }
 
 /* ==========================
-MOBILE
+   MOBILE
 ========================== */
 
 @media(max-width:992px){
 
 .hero-container,
+.meet-grid,
 .story-grid{
 
 grid-template-columns:1fr;
@@ -639,16 +820,17 @@ display:none;
 
 flex-direction:column;
 
+position:absolute;
+
+top:90px;
+left:0;
+
 width:100%;
 
 background:
 rgba(13,43,69,.98);
 
-padding:20px;
-
-margin-top:15px;
-
-border-radius:15px;
+padding:25px;
 
 }
 
@@ -672,27 +854,13 @@ display:none;
 
 .hero{
 
-padding-top:140px;
-
-}
-
-.hero-container{
-
-grid-template-columns:1fr;
-
-text-align:center;
+padding-top:150px;
 
 }
 
 .hero h1{
 
-font-size:2.4rem;
-
-}
-
-.hero p{
-
-font-size:1rem;
+font-size:2.3rem;
 
 }
 
@@ -705,12 +873,18 @@ flex-direction:column;
 .btn{
 
 width:100%;
-
 text-align:center;
 
 }
 
-.wholesale-grid{
+.wholesale-grid,
+.social-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.story-gallery{
 
 grid-template-columns:1fr;
 
@@ -734,13 +908,13 @@ font-size:2rem;
 
 .hero h1{
 
-font-size:2rem;
+font-size:1.9rem;
 
 }
 
-.logo{
+.logo span{
 
-font-size:1.1rem;
+font-size:1rem;
 
 }
 

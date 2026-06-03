@@ -1,5 +1,5 @@
 /* ==========================================
-   CHITTER'S FRITTERS
+   CHITTER'S FRITTERS™
    APP.JS
 ========================================== */
 
@@ -10,13 +10,13 @@ document.addEventListener('DOMContentLoaded', () => {
     ========================== */
 
     const mobileToggle = document.getElementById('mobileToggle');
-    const nav = document.querySelector('.main-nav');
+    const mainNav = document.querySelector('.main-nav');
 
-    if (mobileToggle && nav) {
+    if (mobileToggle && mainNav) {
 
         mobileToggle.addEventListener('click', () => {
 
-            nav.classList.toggle('show');
+            mainNav.classList.toggle('show');
 
             if (mobileToggle.innerHTML === '☰') {
                 mobileToggle.innerHTML = '✕';
@@ -29,15 +29,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ==========================
-       CLOSE MENU WHEN LINK CLICKED
+       CLOSE MENU AFTER CLICK
     ========================== */
 
     document.querySelectorAll('.main-nav a').forEach(link => {
 
         link.addEventListener('click', () => {
 
-            if (nav) {
-                nav.classList.remove('show');
+            if (mainNav) {
+                mainNav.classList.remove('show');
             }
 
             if (mobileToggle) {
@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     /* ==========================
-       SMOOTH SCROLL
+       SMOOTH SCROLLING
     ========================== */
 
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -87,58 +87,114 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (!header) return;
 
-        if (window.scrollY > 50) {
+        if (window.scrollY > 40) {
 
-            header.classList.add('scrolled');
+            header.style.background =
+                'rgba(8,28,44,.96)';
+
+            header.style.boxShadow =
+                '0 10px 30px rgba(0,0,0,.25)';
 
         } else {
 
-            header.classList.remove('scrolled');
+            header.style.background =
+                'rgba(13,43,69,.92)';
+
+            header.style.boxShadow =
+                '0 5px 20px rgba(0,0,0,.15)';
 
         }
 
     });
 
     /* ==========================
-       FADE-IN ANIMATIONS
+       ORDER CALCULATOR
     ========================== */
 
-    const observer = new IntersectionObserver(
+    const minusBtn =
+        document.getElementById('minusBtn');
 
-        (entries) => {
+    const plusBtn =
+        document.getElementById('plusBtn');
 
-            entries.forEach(entry => {
+    const quantityInput =
+        document.getElementById('quantity');
 
-                if (entry.isIntersecting) {
+    const totalPrice =
+        document.getElementById('totalPrice');
 
-                    entry.target.classList.add('animate');
+    const PRICE = 9.95;
 
-                }
+    function updateTotal() {
 
-            });
+        if (!quantityInput || !totalPrice) return;
 
-        },
+        let qty =
+            parseInt(quantityInput.value);
 
-        {
-            threshold: 0.15
+        if (isNaN(qty) || qty < 1) {
+            qty = 1;
         }
 
-    );
+        quantityInput.value = qty;
 
-    const animatedItems = document.querySelectorAll(
-        '.product-card, .wholesale-card, .story-highlight, .contact-card'
-    );
+        const total =
+            (qty * PRICE).toFixed(2);
 
-    animatedItems.forEach(item => {
+        totalPrice.textContent =
+            '$' + total;
 
-        item.classList.add('fade-start');
+    }
 
-        observer.observe(item);
+    if (minusBtn) {
 
-    });
+        minusBtn.addEventListener('click', () => {
+
+            let qty =
+                parseInt(quantityInput.value);
+
+            if (qty > 1) {
+
+                quantityInput.value =
+                    qty - 1;
+
+                updateTotal();
+
+            }
+
+        });
+
+    }
+
+    if (plusBtn) {
+
+        plusBtn.addEventListener('click', () => {
+
+            let qty =
+                parseInt(quantityInput.value);
+
+            quantityInput.value =
+                qty + 1;
+
+            updateTotal();
+
+        });
+
+    }
+
+    if (quantityInput) {
+
+        quantityInput.addEventListener(
+            'input',
+            updateTotal
+        );
+
+    }
+
+    updateTotal();
 
     /* ==========================
-       ACTIVE NAVIGATION LINK
+       ACTIVE NAVIGATION
     ========================== */
 
     const sections =
@@ -183,52 +239,45 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     /* ==========================
-       HERO CARD FLOAT
+       FADE-IN ANIMATIONS
     ========================== */
 
-    const heroCard =
-        document.querySelector('.hero-card');
+    const observer =
+        new IntersectionObserver(
 
-    if (heroCard) {
+            (entries) => {
 
-        let position = 0;
-        let direction = 1;
+                entries.forEach(entry => {
 
-        setInterval(() => {
+                    if (
+                        entry.isIntersecting
+                    ) {
 
-            position += 0.25 * direction;
+                        entry.target.classList.add(
+                            'animate'
+                        );
 
-            if (position > 10) {
-                direction = -1;
+                    }
+
+                });
+
+            },
+
+            {
+                threshold: 0.15
             }
 
-            if (position < -10) {
-                direction = 1;
-            }
+        );
 
-            heroCard.style.transform =
-                `translateY(${position}px)`;
+    document.querySelectorAll(
+        '.product-card, .wholesale-card, .contact-card'
+    ).forEach(el => {
 
-        }, 25);
+        el.classList.add(
+            'fade-start'
+        );
 
-    }
-
-    /* ==========================
-       PARALLAX HERO
-    ========================== */
-
-    const hero =
-        document.querySelector('.hero');
-
-    window.addEventListener('scroll', () => {
-
-        if (!hero) return;
-
-        const offset =
-            window.pageYOffset;
-
-        hero.style.backgroundPositionY =
-            `${offset * 0.4}px`;
+        observer.observe(el);
 
     });
 
@@ -236,13 +285,37 @@ document.addEventListener('DOMContentLoaded', () => {
        CURRENT YEAR
     ========================== */
 
-    const yearSpan =
+    const year =
         document.getElementById('year');
 
-    if (yearSpan) {
+    if (year) {
 
-        yearSpan.textContent =
+        year.textContent =
             new Date().getFullYear();
+
+    }
+
+    /* ==========================
+       STRIPE PLACEHOLDER
+    ========================== */
+
+    const stripeBtn =
+        document.getElementById(
+            'stripeCheckout'
+        );
+
+    if (stripeBtn) {
+
+        stripeBtn.addEventListener(
+            'click',
+            () => {
+
+                console.log(
+                    'Stripe checkout clicked'
+                );
+
+            }
+        );
 
     }
 
@@ -251,7 +324,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ========================== */
 
     console.log(
-        '🍋 Chitter\'s Fritters Loaded Successfully'
+        '🍋 Chitter\\'s Fritters Website Loaded'
     );
 
 });
